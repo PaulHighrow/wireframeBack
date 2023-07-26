@@ -1,12 +1,13 @@
-const express = require('express')
-const getLeads = require('../controllers/getLeads')
+const express = require("express");
+const getLeads = require("../controllers/getLeads");
+const addLead = require("../controllers/addLead");
+const crmAuth = require("../middlewares/crm/crmAuth");
+const postLead = require("../middlewares/crm/postLead");
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/', getLeads)
+router.get("/", crmAuth, getLeads);
 
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post("/", postLead, addLead);
 
-module.exports = router
+module.exports = router;

@@ -1,5 +1,7 @@
 const { getAllLeads } = require("../services/leadsServices");
 
-const getLeads = async (req, res) => await getAllLeads(req, res);
+const getLeads = async (_, res) => {
+  return res.json(await getAllLeads());
+};
 
 module.exports = getLeads;

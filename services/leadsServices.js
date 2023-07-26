@@ -1,16 +1,10 @@
 const Leads = require("../db/models/leadsModel");
 
-const getAllLeads = async (_, res) => {
-  try {
-    const result = Leads.find({});
-    console.log(result);
-    res.json(result);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-};
+const getAllLeads = async () => await Leads.find({});
+
+const newLead = async (body) => await Leads(body).save();
 
 module.exports = {
   getAllLeads,
+  newLead,
 };
