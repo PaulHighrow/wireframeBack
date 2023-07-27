@@ -18,10 +18,9 @@ const refreshRequest = {
 const crmRefresh = async (_, __, next) => {
   try {
     const refreshResp = await axios.post(
-      "oauth2/refresh_token",
+      "oauth2/access_token",
       refreshRequest
     );
-    console.log(refreshResp.data);
     await fs.writeFile(tokenPath, JSON.stringify(refreshResp.data), "utf-8");
     next();
   } catch (error) {
