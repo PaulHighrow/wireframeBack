@@ -27,10 +27,10 @@ const postLead = async (req, _, next) => {
   try {
     const postResp = await axios.post("api/v4/leads", postRequest);
     console.log(postResp.config.data);
-    next();
   } catch (error) {
     console.log(error.response.data);
   }
+  next();
 };
 
 module.exports = postLead;
