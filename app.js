@@ -2,6 +2,7 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
+const router = require('./routes/main')
 const leadsRouter = require('./routes/leads')
 
 const app = express()
@@ -12,6 +13,7 @@ app.use(logger(formatsLogger))
 app.use(cors())
 app.use(express.json())
 
+app.use('/', router)
 app.use('/leads', leadsRouter)
 
 app.use((req, res) => {
