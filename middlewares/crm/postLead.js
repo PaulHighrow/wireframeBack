@@ -6,7 +6,7 @@ axios.defaults.headers.common[
   "Authorization"
 ] = `${token.token_type} ${token.access_token}`;
 
-const postLead = async (req, _, next) => {
+const postLead = async (req, res, next) => {
   const postRequest = [
     {
       name: req.body.name,
@@ -29,6 +29,7 @@ const postLead = async (req, _, next) => {
     console.log(postResp.config.data);
   } catch (error) {
     console.log(error.response.data);
+    return res.status(400).json(error.response.data);
   }
   next();
 };
