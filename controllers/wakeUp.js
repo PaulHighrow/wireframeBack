@@ -1,6 +1,5 @@
-const wakeUp = async (_, res, next) => {
+const wakeUp = async (_, res) => {
   res.status(200).json("Okay, I'm awake");
-  next();
 };
 
 module.exports = wakeUp;

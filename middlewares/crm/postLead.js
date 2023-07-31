@@ -28,8 +28,7 @@ const postLead = async (req, res, next) => {
     const postResp = await axios.post("api/v4/leads", postRequest);
     console.log(postResp.config.data);
   } catch (error) {
-    console.log(error.response.data);
-    return res.status(400).json(error.response.data);
+    return res.status(error.response.status).json(error.response.data);
   }
   next();
 };

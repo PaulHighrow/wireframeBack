@@ -8,7 +8,7 @@ const leadSchema = Joi.object({
 const validateLead = ({ body }, res, next) => {
   const { error } = leadSchema.validate(body);
 
-  if (error) return res.status(400).json(error.details[0].message);
+  if (error) return res.status(error.status).json(error.details[0].message);
 
   next();
 };
