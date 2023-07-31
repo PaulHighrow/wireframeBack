@@ -2,7 +2,7 @@ const Joi = require("joi");
 
 const leadSchema = Joi.object({
   name: Joi.string().min(3).max(50).required(),
-  phone: Joi.string().min(3).max(13),
+  phone: Joi.string().min(3).max(20).required(),
 });
 
 const validateLead = ({ body }, res, next) => {
